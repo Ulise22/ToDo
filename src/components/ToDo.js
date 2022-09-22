@@ -54,7 +54,7 @@ const ToDo = () => {
                 {
                     list.map((itemList) => {
                         return (
-                            <div className="col-6 mx-auto" key={itemList.id} >
+                            <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mx-auto" key={itemList.id} >
                                 <TodoItem  itemList={itemList} changeValue={changeValue} deleteItem={deleteItem} />
                             </div>
                         )

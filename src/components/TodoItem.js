@@ -11,7 +11,7 @@ const TodoItem = (props) => {
         }
 
         return(
-            <div className="d-flex gap-3 mt-2 border-bottom py-3 px-2 justify-content-between float-center">
+            <div className="d-flex gap-3 mt-2 border-bottom py-3 px-2 justify-content-between">
                 <h2>{props.itemList.title}</h2>
                 <div className="d-flex gap-1 align-items-center">
                     <button onClick={() => setIsEditing(true)} className="btn btn-warning">Edit</button>
