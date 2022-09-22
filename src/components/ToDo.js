@@ -35,25 +35,32 @@ const ToDo = () => {
     const deleteItem = (id) => {
         const auxList = list;
         const auxItem = list.find((e) => e.id === id);
-        const listSplice = auxList.splice(auxList.indexOf(auxItem), 1);
-        console.log(listSplice);
-        console.log(auxList);
+        auxList.splice(auxList.indexOf(auxItem), 1);
         setList(auxList);
     }
 
 
     return(
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={item} onChange={handleChange} />
-                <button type="submit">Submit</button>
+        <div className="row">
+
+            <h1 className="text-center mt-2">To Do App!</h1>
+
+            <form className="col-12 input-group mt-2" onSubmit={handleSubmit}>
+                <input type="text" placeholder="Tap to Write a Task!" value={item} onChange={handleChange} className="form-control" />
+                <button type="submit" className="btn btn-success">Submit</button>
             </form>
 
-            {
-                list.map((itemList) => {
-                    return <TodoItem key={itemList.id} itemList={itemList} changeValue={changeValue} deleteItem={deleteItem} />
-                })
-            }
+            <div className="col-12 d-flex flex-column ">
+                {
+                    list.map((itemList) => {
+                        return (
+                            <div className="col-6 mx-auto" key={itemList.id} >
+                                <TodoItem  itemList={itemList} changeValue={changeValue} deleteItem={deleteItem} />
+                            </div>
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }

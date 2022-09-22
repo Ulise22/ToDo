@@ -11,10 +11,12 @@ const TodoItem = (props) => {
         }
 
         return(
-            <div>
+            <div className="d-flex gap-3 mt-2 border-bottom py-3 px-2 justify-content-between float-center">
                 <h2>{props.itemList.title}</h2>
-                <button onClick={() => setIsEditing(true)}>Edit</button>
-                <button onClick={handleDelete}>Delete</button>
+                <div className="d-flex gap-1 align-items-center">
+                    <button onClick={() => setIsEditing(true)} className="btn btn-warning">Edit</button>
+                    <button onClick={handleDelete} className="btn btn-danger">Delete</button>
+                </div>
             </div>
         )
     }
@@ -36,9 +38,9 @@ const TodoItem = (props) => {
         }
 
         return(
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="input-group mt-2">
                 <input type="text"  onChange={handleChange} value={newValue} />
-                <button type="submit">Save</button>
+                <button type="submit" className="btn btn-primary">Save</button>
             </form>
         )
     }

@@ -3,9 +3,12 @@ import ToDo from './components/ToDo';
 
 function App() {
   return (
-    <div className="App">
-      <ToDo />
+    <div className='bg-dark text-white min-w-100 min-vh-100'>
+      <div className="container">
+        <ToDo />
+      </div>
     </div>
+    
   );
 }
 
