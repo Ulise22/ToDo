@@ -1,42 +1,42 @@
 import React, {useState} from "react";
-import TodoItem from "./TodoItem";
+import TodoTask from "./TodoTask";
 
 const ToDo = () => {
-    const [item, setItem] = useState("");
+    const [task, setTask] = useState("");
     const [list, setList] = useState([]);
 
     const handleChange = (e) => {
         e.preventDefault();
 
-        setItem(e.target.value);
+        setTask(e.target.value);
     } 
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const listItem = {
+        const listTask = {
             id: crypto.randomUUID(),
-            title: item
+            title: task
         }
 
         const auxList = list;
-        auxList.push(listItem);
+        auxList.push(listTask);
         setList(auxList);
-        setItem("");
+        setTask("");
     }
 
     const changeValue = (id, newValue) => {
         const auxList = list;
-        const auxItem = auxList.find( (auxItem) => auxItem.id === id);
-        auxItem.title = newValue;
+        const auxTask = auxList.find( (auxTask) => auxTask.id === id);
+        auxTask.title = newValue;
         setList(auxList);
     }
 
-    const deleteItem = (id) => {
+    const deleteTask = (id) => {
         const auxList = list;
-        const auxItem = list.find((e) => e.id === id);
-        auxList.splice(auxList.indexOf(auxItem), 1);
-        setList(auxList);
+        const auxTask = list.find((e) => e.id === id);
+        const cleanList = auxList.filter((e) => e !== auxTask);
+        setList(cleanList);
     }
 
 
@@ -46,16 +46,16 @@ const ToDo = () => {
             <h1 className="text-center mt-2">To Do App!</h1>
 
             <form className="col-12 input-group mt-2" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Tap to Write a Task!" value={item} onChange={handleChange} className="form-control" />
+                <input type="text" placeholder="Tap to Write a Task!" value={task} onChange={handleChange} className="form-control" />
                 <button type="submit" className="btn btn-success">Submit</button>
             </form>
 
             <div className="col-12 d-flex flex-column ">
                 {
-                    list.map((itemList) => {
+                    list.map((taskList) => {
                         return (
-                            <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mx-auto" key={itemList.id} >
-                                <TodoItem  itemList={itemList} changeValue={changeValue} deleteItem={deleteItem} />
+                            <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 col-xxl-6 mx-auto" key={taskList.id} >
+                                <TodoTask  taskList={taskList} changeValue={changeValue} deleteTask={deleteTask} />
                             </div>
                         )
                     })
